@@ -11,7 +11,7 @@ For example, given a nested object like this:
     "DOB": "-",
     "hobbies": [ "running", "coding", "-" ],
     "education": { "highschool": "N/A", "college": "Yale" }
-}```
+} ```
 
 
 
