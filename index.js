@@ -8,13 +8,10 @@ function solution(myObj) {
     if (Array.isArray(val)) {
       newObj[key] = val.filter((item) => !options.includes(item));
     } else if (typeof myObj[key] === "object") {
-      let nestedObj = {};
-      for (let j in val) {
-        if (!options.includes(val[j])) {
-          nestedObj[j] = val[j];
-        }
-      }
-      newObj[key] = nestedObj;
+      
+      const arr = Object.entries(val);
+      newObj[key] = Object.fromEntries(arr.filter((item) => !options.includes(item[1])));
+
     } else if (!options.includes(val)) {
       newObj[key] = val;
     }
