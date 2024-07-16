@@ -5,7 +5,7 @@
 Examples
 For example, given a nested object like this:
 
-```var myObj = {
+```javascript var myObj = {
     "name": { "first": "Robert", "middle": "", "last": "Smith" },
     "age": 25,
     "DOB": "-",
