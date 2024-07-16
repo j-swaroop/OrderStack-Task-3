@@ -1,27 +1,25 @@
 function solution(myObj) {
-  //   let newObj = {};
+  let newObj = {};
   let options = ["", "-", "N/A"];
-  //   console.log(typeof(myObj.name))
   for (let i in myObj) {
-    if (typeof myObj[i] === "object") {
-      const nestedObject = myObj[i];
+    let key = i;
+    let val = myObj[i];
 
-      if (Array.isArray(myObj[i])) {
-        let a = nestedObject.filter((item) => !options.includes(item));
-        myObj[i] = a;
-      } else {
-        let arrPair = Object.entries(nestedObject);
-        let n = arrPair.filter((item) => !options.includes(item[1]));
-
-        myObj[i] = Object.fromEntries(n);
+    if (Array.isArray(val)) {
+      newObj[key] = val.filter((item) => !options.includes(item));
+    } else if (typeof myObj[key] === "object") {
+      let nestedObj = {};
+      for (let j in val) {
+        if (!options.includes(val[j])) {
+          nestedObj[j] = val[j];
+        }
       }
-    } else {
-      if (options.includes(myObj[i])) {
-        delete myObj[i];
-      }
+      newObj[key] = nestedObj;
+    } else if (!options.includes(val)) {
+      newObj[key] = val;
     }
   }
-  return myObj;
+  console.log(newObj);
 }
 
 let myObj = {
